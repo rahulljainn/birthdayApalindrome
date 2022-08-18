@@ -1,3 +1,46 @@
+var dateInputref= document.querySelector("#bdayInput");
+var showbtnref=document.querySelector("#show-btn");
+var resultref= document.querySelector("#output")
+
+
+function clickHandler(e){
+    var bdaystr=dateInputref.value;
+
+     if(bdaystr !==''){
+        var listofDate=bdaystr.split('-');
+        var date={
+            day: Number(listofDate[2]),
+            month: Number(listofDate[1]),
+            year: Number(listofDate[0])
+        };
+        var isPalindrome=checkPalindromeforalldateformats(date); 
+
+        if(isPalindrome){
+            resultref.innerText="Yeah!! Your birthday is a Palindrome!🎉🎉"
+        }else{
+            var [con,nextDate]=nextPalindromedate(date);
+            resultref.innerText='The Palindrome Date is '
+            resultref.innerText=$(nextDate.day)-$(nextDate.month)-$(nextDate.year);
+        }
+        }
+     }
+
+     showbtnref.addEventListener("click",clickHandler)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function reverseStr(str){
     var listofChars = str.split('');
     var reverselistofchars =listofChars.reverse();
@@ -11,21 +54,23 @@ function isPalindrome(str){
 }
 
 function convertDatetoStr(date){
-    var dateStr = {day:"",month:"",year:""};
+    var dateStr = {day:'',month:'',year:''};
 
 if(date.day< 10){
     dateStr.day='0' + date.day;
 
 }else{
-    dateStr.day=date.day.tostring();
+    dateStr.day=date.day.toString();
 }
 if(date.month< 10){
     dateStr.month='0' + date.month;
 
 }else{
-    dateStr.month=date.month.tostring();
+    dateStr.month=date.month.toString();
 }
- dateStr.year=date.year.tostring();
+
+ dateStr.year=date.year.toString(); 
+return dateStr;
 }
 function alldateFormats(date){
     var dateStr= convertDatetoStr(date);
@@ -67,7 +112,7 @@ function isleapyear(year){
     return false;
 }
 
-function nextDate(date){
+function getnextDate(date){
      var day= date.day+1;
      var month= date.month;
      var year= date.year;
@@ -82,13 +127,14 @@ if (month===2){
             month++;
         }
     }
-}else{
+else{
     if(day>28){
         day=1;
         month++;
     }
 }
-}else{
+}
+else {
     if(day> daysinmonth[month-1]){
         day=1;
         month++;
@@ -104,9 +150,22 @@ return {
     month:month,
     year:year
 };
+}
 
 
 function nextPalindromedate(date){
+    var ctr =0;
+    var nextDate=getnextDate(date);
     
-
+    while(1){
+        ctr++;
+        var isPalindrome=checkPalindromeforalldateformats(nextDate);
+        if(isPalindrome){
+            break;
+        }
+        nextDate=getnextDate(nextDate);
+    }
+ 
+   return[ctr,nextDate];
 }
+
