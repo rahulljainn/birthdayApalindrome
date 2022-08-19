@@ -19,7 +19,7 @@ function clickHandler(e){
             resultref.innerText="Yeah!! Your birthday is a Palindrome!🎉🎉"
         }else{
             var [con,nextDate]=nextPalindromedate(date);
-            resultref.innerText=`The Palindrome Date is ${nextDate.day}-${nextDate.month}-${nextDate.year} and you missed it by ${con} days`
+            resultref.innerText=`The  Next Palindrome Date is ${nextDate.day}-${nextDate.month}-${nextDate.year} and you missed it by ${con} days`
             
         }
         }
