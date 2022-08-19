@@ -1,0 +1,29 @@
+body{
+    text-align: center;
+    padding-top: 10rem;
+    background-color: beige;
+    
+}
+input{
+    width: 60vh;
+    display: block;
+    margin: auto;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    
+}
+h2{
+    font-size: 5em;
+}
+button{
+    font-size: larger;
+    border-radius: 0.5rem;
+    border-color: brown;
+    text-decoration: underline;
+
+}
+p{
+    font-size: 3rem;
+    font-style: italic;
+    
+}
