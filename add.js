@@ -3,26 +3,29 @@ var showbtnref=document.querySelector("#show-btn");
 var resultref= document.querySelector("#output")
 
 
-function clickHandler(e){
-    var bdaystr=dateInputref.value;
+    function clickHandler(e){
+    if (dateInputref.value !==""){var bdaystr=dateInputref.value;
 
-     if(bdaystr !==''){
-        var listofDate=bdaystr.split('-');
-        var date={
-            day: Number(listofDate[2]),
-            month: Number(listofDate[1]),
-            year: Number(listofDate[0])
-        };
-        var isPalindrome=checkPalindromeforalldateformats(date); 
-
-        if(isPalindrome){
-            resultref.innerText="Yeah!! Your birthday is a Palindrome!🎉🎉"
-        }else{
-            var [con,nextDate]=nextPalindromedate(date);
-            resultref.innerText=`The  Next Palindrome Date is ${nextDate.day}-${nextDate.month}-${nextDate.year} and you missed it by ${con} days`
-            
-        }
-        }
+        if(bdaystr !==''){
+           var listofDate=bdaystr.split('-');
+           var date={
+               day: Number(listofDate[2]),
+               month: Number(listofDate[1]),
+               year: Number(listofDate[0])
+           };
+           var isPalindrome=checkPalindromeforalldateformats(date); 
+   
+           if(isPalindrome){
+               resultref.innerText="Yeah!! Your birthday is a Palindrome!🎉🎉"
+           }else{
+               var [con,nextDate]=nextPalindromedate(date);
+               resultref.innerText=`The  Next Palindrome Date is ${nextDate.day}-${nextDate.month}-${nextDate.year} and you missed it by ${con} days`
+               
+           }
+           } }else{
+            alert("Please Enter valid information")
+           }
+    
      }
 
      showbtnref.addEventListener("click",clickHandler)
