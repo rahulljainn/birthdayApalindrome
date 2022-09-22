@@ -23,7 +23,7 @@ var resultref= document.querySelector("#output")
                
            }
            } }else{
-            alert("Please Enter valid information")
+            resultref.innerText=("Please Enter valid information")
            }
     
      }
